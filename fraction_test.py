@@ -29,9 +29,22 @@ class FractionTest(unittest.TestCase):
     # TODO Write tests for __init__, __eq__, +, *.
     # Here is an example, but you must add more test cases.  
     # The test requires that your __eq__ is correct.
+
+    def test_init(self):
+        pass
+
     def test_add(self):
         # 3/4 = 2/3 + 1/12
         self.assertEqual(Fraction(3,4), Fraction(1,12)+Fraction(2,3))
+
+    def test_sub(self):
+        pass
+
+    def test_mul(self):
+        pass
+
+    def test_neg(self):
+        pass
 
     def test_eq(self):
         f = Fraction(1,2)
