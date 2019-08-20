@@ -56,3 +56,13 @@ class FractionTest(unittest.TestCase):
         self.assertFalse(f.__eq__(h))
         #TODO write more tests using other cases.
         # Consider special values like 0, 1/0, -1/0
+    
+    def test_impossible_case(self):
+        with self.assertRaises(ValueError):
+            self.assertEqual(ValueError, Fraction(1,0))
+            self.assertEqual(ValueError, Fraction(-1,-0))
+            self.assertEqual(ValueError, Fraction(0,0))
+            self.assertEqual(ValueError, Fraction(5,-0))
+    
+    def test_numerator_is_zero(self):
+        pass

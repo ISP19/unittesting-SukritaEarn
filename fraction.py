@@ -13,6 +13,17 @@ class Fraction:
         """Initialize a new fraction with the given numerator
            and denominator (default 1).
         """
+        gcd = math.gcd(int(numerator), int(denominator))
+        numerator /= gcd
+        denominator /= gcd
+        if denominator == 0:
+            raise ValueError("Denominator can not be 0.")
+        elif numerator < 0 and denominator < 0:
+            numerator = -numerator
+            denominator = -denominator
+        elif denominator < 0:
+            numerator = -numerator
+            denominator = abs(denominator)
         self.numerator = numerator
         self.denominator = denominator
 
@@ -22,11 +33,8 @@ class Fraction:
         """
         numerator = (self.numerator * frac.denominator) + (self.denominator * frac.numerator)
         denominator = self.denominator * frac.denominator
-        if numerator < 0 or denominator < 0:
-            negative = -1
-        negative = 1
-        gcd = math.gcd(abs(numerator), abs(denominator))
-        numerator /= gcd * negative
+        gcd = math.gcd(int(numerator), int(denominator))
+        numerator /= gcd
         denominator /= gcd
         return Fraction(numerator, denominator)
 
@@ -36,11 +44,8 @@ class Fraction:
         """
         numerator = (self.numerator * frac.denominator) - (self.denominator * frac.numerator)
         denominator = self.denominator * frac.denominator
-        if numerator < 0 or denominator < 0:
-            negative = -1
-        negative = 1
-        gcd = math.gcd(abs(numerator), abs(denominator))
-        numerator /= gcd * negative
+        gcd = math.gcd(int(numerator), int(denominator))
+        numerator /= gcd
         denominator /= gcd
         return Fraction(numerator, denominator)
 
@@ -50,25 +55,19 @@ class Fraction:
         """
         numerator = self.numerator * frac.numerator
         denominator = self.denominator * frac.denominator
-        if numerator < 0 or denominator < 0:
-            negative = -1
-        negative = 1
-        gcd = math.gcd(abs(numerator), abs(denominator))
-        numerator /= gcd * negative
+        gcd = math.gcd(int(numerator), int(denominator))
+        numerator /= gcd
         denominator /= gcd
         return Fraction(numerator, denominator)
 
-    def __div__(self, frac):
+    def __truediv__(self, frac):
         """Return the quotient of two fractions as a new fraction.
            Use the standard formula  a/b / c/d = (a*d)/(b*c)
         """
         numerator = self.numerator * frac.denominator
         denominator = self.denominator * frac.numerator
-        if numerator < 0 or denominator < 0:
-            negative = -1
-        negative = 1
-        gcd = math.gcd(abs(numerator), abs(denominator))
-        numerator /= gcd * negative
+        gcd = math.gcd(int(numerator), int(denominator))
+        numerator /= gcd
         denominator /= gcd
         return Fraction(numerator, denominator)
 
@@ -76,7 +75,7 @@ class Fraction:
         """Return the fraction in a negative form as a new fraction."""
         numerator = -self.numerator
         denominator = self.denominator 
-        gcd = math.gcd(abs(numerator), abs(denominator))
+        gcd = math.gcd(int(numerator), int(denominator))
         numerator /= gcd
         denominator /= gcd
         return Fraction(numerator, denominator)
@@ -86,22 +85,21 @@ class Fraction:
            Fractions are stored in proper form so the internal representation
            is unique (3/6 is same as 1/2).
         """
-        gcd1 = math.gcd(abs(self.numerator), abs(self.denominator))
+        gcd1 = math.gcd(int(self.numerator), int(self.denominator))
         self.numerator /= gcd1
         self.denominator /= gcd1
-        gcd2 = math.gcd(abs(self.numerator), abs(self.denominator))
+        gcd2 = math.gcd(int(self.numerator), int(self.denominator))
         frac.numerator /= gcd2
         frac.denominator /= gcd2
         return self.numerator == frac.numerator and self.denominator == frac.denominator
 
     def __repr__(self):
-        gcd = math.gcd(int(abs(self.numerator)), int(abs(self.denominator)))
-        self.numerator /= gcd
-        self.denominator /= gcd
         if self.denominator == 1:
             return "{}".format(int(self.numerator))
-        if self.numerator < 0 and self.denominator < 0:
-            return "{}/{}".format(int(abs(self.numerator)), int(abs(self.denominator)))
-        if self.denominator < 0:
-            return "{}/{}".format(int(-self.numerator), int(abs(self.denominator)))
         return "{}/{}".format(int(self.numerator), int(self.denominator))
+
+    def __str__(self):
+        if self.denominator == 1:
+            return "{}".format(int(self.numerator))
+        return "{}/{}".format(int(self.numerator), int(self.denominator))
+        
