@@ -107,15 +107,17 @@ class FractionTest(unittest.TestCase):
         with self.assertRaises(ZeroDivisionError):
             self.assertEqual(ZeroDivisionError, Fraction(0)/Fraction(0))
 
-    def test_error_case(self):
+    def test_value_error_case(self):
         with self.assertRaises(ValueError):
             self.assertEqual(ValueError, Fraction("w", "e"))
+    
+    def test_type_error_case(self):
         with self.assertRaises(TypeError):
             self.assertEqual(TypeError, Fraction("3","2"))
         with self.assertRaises(TypeError):
             self.assertEqual(TypeError, Fraction([1],[9]))
 
-    def test_zero_denominator(self):
+    def test_denominator_is_zero(self):
         self.assertEqual(Fraction(1,0), Fraction(5,-0))
         self.assertEqual(Fraction(-1,0), Fraction(-33,0))
         self.assertEqual(Fraction(-1,0), Fraction(-17,-0))
