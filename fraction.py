@@ -16,8 +16,13 @@ class Fraction:
         gcd = math.gcd(int(numerator), int(denominator))
         numerator /= gcd
         denominator /= gcd
-        if denominator == 0:
-            raise ValueError("Denominator can not be 0.")
+        if denominator == 0 and numerator == 0:
+            raise ZeroDivisionError
+        elif denominator == 0:
+            if numerator < 0:
+                numerator = -1
+            else:
+                numerator = 1
         elif numerator < 0 and denominator < 0:
             numerator = -numerator
             denominator = -denominator
