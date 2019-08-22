@@ -30,11 +30,11 @@ class ListUtilTest(unittest.TestCase):
 
     def test_not_list_argument(self):
         with self.assertRaises(ValueError):
-            self.assertEqual(ValueError, unique("not list"))
+            unique("not list")
         with self.assertRaises(ValueError):
-            self.assertEqual(ValueError, unique("[1,2,3,4]"))
+            unique(["[1,2,3,4]"])
         with self.assertRaises(ValueError):
-            self.assertEqual(ValueError, unique(890))
+            unique(890)
 
 if __name__ == '__main__':
     unittest.main()

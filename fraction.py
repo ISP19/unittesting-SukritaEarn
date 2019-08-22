@@ -13,12 +13,10 @@ class Fraction:
         """Initialize a new fraction with the given numerator
            and denominator (default 1).
         """
-        gcd = math.gcd(int(numerator), int(denominator))
-        numerator /= gcd
-        denominator /= gcd
-        if denominator == 0 and numerator == 0:
-            raise ZeroDivisionError
-        elif denominator == 0:
+        if type(numerator) != int or type(denominator) != int:
+            raise ValueError
+        
+        if denominator == 0 and numerator != 0:
             if numerator < 0:
                 numerator = -1
             else:
@@ -29,30 +27,62 @@ class Fraction:
         elif denominator < 0:
             numerator = -numerator
             denominator = abs(denominator)
-        self.numerator = numerator
-        self.denominator = denominator
+
+        if denominator == 0 and numerator == 0:
+            numerator = 0
+            denominator = 0
+        else:
+            gcd = math.gcd(int(numerator), int(denominator))
+            numerator /= gcd
+            denominator /= gcd
+        self.numerator = int(numerator)
+        self.denominator = int(denominator)
 
     def __add__(self, frac):
         """Return the sum of two fractions as a new fraction.
            Use the standard formula  a/b + c/d = (ad+bc)/(b*d)
         """
-        numerator = (self.numerator * frac.denominator) + (self.denominator * frac.numerator)
-        denominator = self.denominator * frac.denominator
-        gcd = math.gcd(int(numerator), int(denominator))
-        numerator /= gcd
-        denominator /= gcd
-        return Fraction(numerator, denominator)
+        if self.numerator == 0 and self.denominator == 0:
+            numerator = 0
+            denominator = 0
+        elif frac.numerator == 0 and frac.denominator == 0:
+            numerator = 0
+            denominator = 0
+        elif self.denominator == 0 and frac.denominator == 0:
+            if self.numerator + frac.numerator > 0:
+                numerator = 1
+            elif self.numerator + frac.numerator < 0:
+                numerator = -1
+            else:
+                numerator = 0
+            denominator = 0
+        else:
+            numerator = (self.numerator * frac.denominator) + (self.denominator * frac.numerator)
+            denominator = self.denominator * frac.denominator
+        return Fraction(int(numerator), int(denominator))
 
     def __sub__(self, frac):
         """Return the difference of two fractions as a new fraction.
            Use the standard formula  a/b - c/d = (ad-bc)/(b*d)
         """
-        numerator = (self.numerator * frac.denominator) - (self.denominator * frac.numerator)
-        denominator = self.denominator * frac.denominator
-        gcd = math.gcd(int(numerator), int(denominator))
-        numerator /= gcd
-        denominator /= gcd
-        return Fraction(numerator, denominator)
+        if self.numerator == 0 and self.denominator == 0:
+            numerator = 0
+            denominator = 0
+        elif frac.numerator == 0 and frac.denominator == 0:
+            numerator = 0
+            denominator = 0
+        elif self.denominator == 0 and frac.denominator == 0:
+            if self.numerator - frac.numerator > 0:
+                numerator = 1
+            elif self.numerator - frac.numerator < 0:
+                numerator = -1
+            else:
+                numerator = 0
+            denominator = 0
+        else:
+            numerator = (self.numerator * frac.denominator) - (self.denominator * frac.numerator)
+            denominator = self.denominator * frac.denominator
+        return Fraction(int(numerator), int(denominator))
 
     def __mul__(self, frac):
         """Return the product of two fractions as a new fraction.
@@ -60,10 +90,7 @@ class Fraction:
         """
         numerator = self.numerator * frac.numerator
         denominator = self.denominator * frac.denominator
-        gcd = math.gcd(int(numerator), int(denominator))
-        numerator /= gcd
-        denominator /= gcd
-        return Fraction(numerator, denominator)
+        return Fraction(int(numerator), int(denominator))
 
     def __truediv__(self, frac):
         """Return the quotient of two fractions as a new fraction.
@@ -71,40 +98,35 @@ class Fraction:
         """
         numerator = self.numerator * frac.denominator
         denominator = self.denominator * frac.numerator
-        gcd = math.gcd(int(numerator), int(denominator))
-        numerator /= gcd
-        denominator /= gcd
-        return Fraction(numerator, denominator)
+        return Fraction(int(numerator), int(denominator))
 
     def __neg__(self):
         """Return the fraction in a negative form as a new fraction."""
         numerator = -self.numerator
-        denominator = self.denominator 
-        gcd = math.gcd(int(numerator), int(denominator))
-        numerator /= gcd
-        denominator /= gcd
-        return Fraction(numerator, denominator)
+        denominator = self.denominator
+        return Fraction(int(numerator), int(denominator))
 
     def __eq__(self, frac):
         """Two fractions are equal if they have the same value.
            Fractions are stored in proper form so the internal representation
            is unique (3/6 is same as 1/2).
         """
-        gcd1 = math.gcd(int(self.numerator), int(self.denominator))
-        self.numerator /= gcd1
-        self.denominator /= gcd1
-        gcd2 = math.gcd(int(self.numerator), int(self.denominator))
-        frac.numerator /= gcd2
-        frac.denominator /= gcd2
+        if self.denominator == 0 and frac.denominator == 0:
+            if self.numerator == frac.numerator:
+                return True
+            else:
+                return False
         return self.numerator == frac.numerator and self.denominator == frac.denominator
 
-    def __repr__(self):
-        if self.denominator == 1:
-            return "{}".format(int(self.numerator))
-        return "{}/{}".format(int(self.numerator), int(self.denominator))
-
     def __str__(self):
-        if self.denominator == 1:
+        if self.denominator == 0 and self.numerator == 0:
+            return "Indeterminate form"
+        elif self.denominator == 0 and self.numerator == 1:
+            return "Infinity"
+        elif self.denominator == 0 and self.numerator == -1:
+            return "-Infinity"
+        elif self.denominator == 1:
             return "{}".format(int(self.numerator))
-        return "{}/{}".format(int(self.numerator), int(self.denominator))
-        
+        else:
+            return "{}/{}".format(int(self.numerator), int(self.denominator))
+

@@ -31,8 +31,9 @@ Write a table describing your test cases.
 | truediv method                        | the quotient of two fractions as a new fraction    |
 | negative method                       | the fraction in a negative form as a new fraction  |
 | equal method                          | True or False                                      |
-| 0/0                                   | ZeroDivisionError                                  |
-| insert str to Fraction class          | ValueError                                         |
-| didn't insert int to Fraction calss   | TypeError                                          |
+| 0/0                                   | Indeterminate form                                 |
+| 1/0                                   | Infinity                                           |
+| -1/0                                  | -Infinity                                          | 
+| didn't insert int to Fraction calss   | ValueError                                         |
 | denominator is zero                   | 1/0 or -1/0                                        |
 | numerator is zero                     | 0                                                  |
