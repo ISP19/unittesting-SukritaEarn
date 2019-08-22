@@ -161,9 +161,6 @@ class FractionTest(unittest.TestCase):
         q = Fraction(-1,0)
         self.assertFalse(p == q)
         self.assertTrue(p.__eq__(-q))
-    
-    def test_zero_division_case(self):
-        self.assertEqual(Fraction(0,0), Fraction(0,1)*Fraction(1,0))
 
     def test_value_error_case(self):
         with self.assertRaises(ValueError):
