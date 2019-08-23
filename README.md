@@ -24,7 +24,7 @@ Write a table describing your test cases.
 | Test case                             | Expected Result                                    |
 |---------------------------------------|----------------------------------------------------|
 | str method                            | fraction in a proper form                          |
-| init method                           | numerator and denominator in proper form           |
+| init method                           | numerator and denominator in a proper form         |
 | add method                            | the sum of two fractions as a new fraction         |
 | sub method                            | the difference of two fractions as a new fraction  |
 | mul method                            | the product of two fractions as a new fraction     | 
@@ -32,8 +32,8 @@ Write a table describing your test cases.
 | negative method                       | the fraction in a negative form as a new fraction  |
 | equal method                          | True or False                                      |
 | 0/0                                   | Indeterminate form                                 |
-| 1/0                                   | Infinity                                           |
-| -1/0                                  | -Infinity                                          | 
+| denominator = 0 and numerator > 0     | Infinity                                           |
+| denominator = 0 and numerator < 0     | -Infinity                                          | 
+| denominator is zero                   | convert numerator to 1 or -1                       |
+| numerator is zero                     | Fraction(0)                                        |
 | didn't insert int to Fraction calss   | ValueError                                         |
-| denominator is zero                   | 1/0 or -1/0                                        |
-| numerator is zero                     | 0                                                  |
