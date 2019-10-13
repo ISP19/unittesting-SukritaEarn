@@ -32,7 +32,7 @@ class ListUtilTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             unique("not list")
         with self.assertRaises(ValueError):
-            unique(["[1,2,3,4]"])
+            unique("[1,2,3,4]")
         with self.assertRaises(ValueError):
             unique(890)
 
