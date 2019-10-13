@@ -1,4 +1,5 @@
 ## Unit Testing Assignment
+[![Build Status](https://travis-ci.com/SukritaEarn/unittesting-SukritaEarn.svg?branch=master)](https://travis-ci.com/SukritaEarn/unittesting-SukritaEarn)
 
 by Sukrita Kittipitayakorn.
 
