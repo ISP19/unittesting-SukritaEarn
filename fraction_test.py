@@ -82,8 +82,8 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(Fraction(-1,0), Fraction(-8,0)+Fraction(-1,0))
         self.assertEqual(Fraction(1,0), Fraction(4,5)+Fraction(9,0))
         self.assertEqual(Fraction(0,0), Fraction(-1,0)+Fraction(1,0))
-        self.assertEqual(Fraction(0,0), Fraction(5,0)+Fraction(-6,0))
-        self.assertEqual(Fraction(0,0), Fraction(-3,0)+Fraction(0,0))
+        self.assertEqual(Fraction(0,0), Fraction(5,0)+Fraction(0,0))
+        self.assertEqual(Fraction(0,0), Fraction(0,0)+Fraction(-3,0))
 
     def test_sub(self):
         self.assertEqual(Fraction(5), Fraction(-200,-2)-Fraction(950,10))
@@ -95,7 +95,7 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(Fraction(1,0), Fraction(90,0)-Fraction(3,4))
         self.assertEqual(Fraction(-1,0), Fraction(-6,0)-Fraction(2,0))
         self.assertEqual(Fraction(1,0), Fraction(0)-Fraction(-4,0))
-        self.assertEqual(Fraction(0,0), Fraction(5,0)-Fraction(3,0))
+        self.assertEqual(Fraction(0,0), Fraction(5,0)-Fraction(0,0))
         self.assertEqual(Fraction(0,0), Fraction(-7,0)-Fraction(-9,0))
         self.assertEqual(Fraction(0,0), Fraction(0,0)-Fraction(0,0))
 
