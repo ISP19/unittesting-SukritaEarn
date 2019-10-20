@@ -183,3 +183,6 @@ class FractionTest(unittest.TestCase):
         self.assertEqual(Fraction(0,8), Fraction(0,-3))
         self.assertEqual(Fraction(-0,100), Fraction(-0,-5))
         self.assertEqual(Fraction(-0,9), Fraction(0,-9))
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

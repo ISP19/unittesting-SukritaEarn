@@ -1,9 +1,16 @@
- language: python
+language: python
     
- python: "3.6"
+python: "3.6"
     
- git:
-   depth: 1
+git:
+  depth: 1
 
- script: 
-   - python -m unittest discover -p "*_test.py"
+install:
+  - pip install codecov
+
+script: 
+  - python -m unittest discover -p "*_test.py"
+  - coverage run fraction_tests.py
+
+after_success:
+  - codecov
