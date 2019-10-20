@@ -9,9 +9,8 @@ install:
   - pip install codecov
 
 script: 
-  - python -m unittest discover -p "*_test.py"
+  - python -m unittest discover -p "fraction_test.py"
   - coverage run fraction_test.py
-  - coverage run listutil_test.py
 
 after_success:
   - codecov
