@@ -1,5 +1,6 @@
 ## Unit Testing Assignment
 [![Build Status](https://travis-ci.com/SukritaEarn/unittesting-SukritaEarn.svg?branch=master)](https://travis-ci.com/SukritaEarn/unittesting-SukritaEarn)
+[![codecov](https://codecov.io/gh/SukritaEarn/unittesting-SukritaEarn/branch/master/graph/badge.svg)](https://codecov.io/gh/SukritaEarn/unittesting-SukritaEarn)
 
 by Sukrita Kittipitayakorn.
 
