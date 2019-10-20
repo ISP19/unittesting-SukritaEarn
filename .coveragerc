@@ -1,0 +1,4 @@
+branch = True
+cover_pylib = False
+omit =
+    utils/fraction_test.py
